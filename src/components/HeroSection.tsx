@@ -1,5 +1,12 @@
 import React, { useRef } from 'react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import hero1 from '../assets/hero1.png';
+import hero2 from '../assets/hero2.png';
+import hero3 from '../assets/hero3.png';
+import hero4 from '../assets/hero4.png';
+import hero5 from '../assets/hero5.png';
+
+const heroImages = [hero1, hero2, hero3, hero4, hero5];
 
 const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -8,75 +15,55 @@ const HeroSection: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-screen flex items-center bg-white transition-all duration-1000 ${
-        isHeroVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-10"
-      }`}
+      className={`relative min-h-screen overflow-hidden flex items-center justify-center bg-black transition-all duration-1000 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
     >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight text-[#1a1a1a]">
-              Welcome to{" "}
-              <span className="text-[#4052F6]">Aabha Vidya Niketan</span>{" "}
-              School
-            </h1>
-            <p className="text-lg mb-8 text-gray-600">
-              Transform your career with our CPD-accredited courses in
-              Finance, Health & Safety, and Environmental Safety. Expert-led
-              training designed for success.
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="bg-[#2B3377] text-white px-6 py-3 rounded-lg whitespace-nowrap cursor-pointer hover:bg-[#1a1f4d] transition-colors duration-300">
-                Get Started
-              </button>
-              <button className="bg-white text-[#2B3377] px-6 py-3 border border-[#2B3377] rounded-lg whitespace-nowrap cursor-pointer hover:bg-gray-50 transition-colors duration-300 flex items-center">
-                View Courses <span className="ml-2">→</span>
-              </button>
-            </div>
-            <div className="grid grid-cols-3 gap-8 mt-12">
-              <div>
-                <h3 className="text-3xl font-bold text-[#2B3377] mb-2">
-                  500+
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Certified Professionals
-                </p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold text-[#2B3377] mb-2">
-                  98%
-                </h3>
-                <p className="text-gray-600 text-sm">Success Rate</p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-bold text-[#2B3377] mb-2">
-                  50+
-                </h3>
-                <p className="text-gray-600 text-sm">Expert Instructors</p>
-              </div>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src="https://static.readdy.ai/image/953bd119c83c8d2bfefb1444f876a614/25c3f2fb659e3a68e3ddce4b480dd5b1.png"
-              alt="Aabha Vidya Niketan Campus"
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-            <div className="absolute bottom-4 left-4 bg-white py-2 px-4 rounded-full shadow-md flex items-center space-x-2">
-              <span className="text-[#4052F6]">✓</span>
-              <div className="text-sm">
-                <p className="font-medium text-gray-900">CPD Accredited</p>
-                <p className="text-gray-600 text-xs">Industry Recognized</p>
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 bg-white py-1 px-3 rounded-full shadow-md flex items-center space-x-2">
-              <p className="text-sm text-gray-600">Designed by</p>
-              <span className="text-[#4052F6]">✓</span>
-            </div>
-          </div>
-        </div>
+      {/* Carousel Background */}
+      <div className="absolute inset-0 z-0">
+        {heroImages.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Hero ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover opacity-0 animate-fadeCarousel`}
+            style={{
+              animationDelay: `${index * 5}s`,
+              animationDuration: `${heroImages.length * 5}s`,
+            }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-black/40" /> {/* Overlay for contrast */}
+      </div>
+
+      {/* Foreground Text */}
+      <div className="relative z-10 text-center px-6 mt-20">
+        <h1 className="text-4xl lg:text-4xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+          Welcome to
+        </h1>
+        {/* <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right,rgb(78, 95, 245), rgb(48, 38, 185), #4f46e5, #4f46e5, #3730a3,rgb(78, 95, 245))',
+            }}
+          >
+            Aabha Vidya Niketan
+          </span>{" "}
+          School
+        </h1> */}
+        <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg  color-white p-2 rounded-lg"
+        style={{
+              backgroundImage:
+                'linear-gradient(to right,rgb(78, 95, 245), rgb(48, 38, 185), #4f46e5, #4f46e5, #3730a3,rgb(78, 95, 245))',
+            }}>
+          <span
+            className=""
+          >
+            Aabha Vidya Niketan
+          </span>{" "}
+          School
+        </h1>
       </div>
     </section>
   );

@@ -22,15 +22,23 @@ export default {
         },
       },
       borderRadius: {
-        'button': '0.5rem',
+        button: '0.5rem',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        fadeCarousel: 'fadeCarousel 25s infinite',
       },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeCarousel: {
+          '0%': { opacity: 0 },
+          '4%': { opacity: 1 },
+          '20%': { opacity: 1 },
+          '24%': { opacity: 0 },
+          '100%': { opacity: 0 },
         },
       },
     },

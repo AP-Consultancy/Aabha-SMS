@@ -88,10 +88,10 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold text-white mb-6">Contact Us</h3>
             <ul className="space-y-4">
-              <ContactItem icon="📍" text="123 Education Avenue, Innovation District, CA 90210" />
-              <ContactItem icon="📞" text="+1 (555) 123-4567" />
+              <ContactItem icon="📍" text="Rajeev Nagar, Semra Kalan, Chandbar, Bhopal, Semra road, Bhopal Gpo-462001" />
+              <ContactItem icon="📞" text="07947124855" />
               <ContactItem icon="✉️" text="info@aabhavidyaniketan.edu" />
-              <ContactItem icon="⏰" text="Monday - Friday: 8:00 AM - 5:00 PM" />
+              <ContactItem icon="⏰" text="Monday - Saturday: 8:00 AM - 5:00 PM" />
             </ul>
           </div>
           <div>
